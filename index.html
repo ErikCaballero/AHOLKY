@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AHOLKUTY - Asesoría para autónomos y PYMES en Bilbao. Servicios fiscales, contables, laborales, administrativos y sostenibilidad.">
+  <title>AHOLKUTY | Asesoría para PYMES y Autónomos</title>
+  <style>
+    :root {
+      --primary: #123b52;
+      --primary-dark: #0b2939;
+      --accent: #2aa889;
+      --accent-light: #e7f6f1;
+      --text: #20313a;
+      --muted: #64747c;
+      --light: #f5f8f9;
+      --white: #fff;
+      --border: #dfe7ea;
+      --shadow: 0 12px 35px rgba(18, 59, 82, .10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(223,231,234,.8);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: .04em;
+      color: var(--primary);
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      font-size: .9rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-size: .94rem;
+      font-weight: 600;
+      color: #465860;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .nav-button {
+      background: var(--primary);
+      color: var(--white);
+      padding: 10px 17px;
+      border-radius: 10px;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(42,168,137,.17), transparent 30%),
+        linear-gradient(135deg, #f3f8f9 0%, #ffffff 60%);
+      padding: 90px 0 82px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: #177c67;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: .82rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 11px;
+      font-weight: 750;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .button-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    .button-secondary {
+      background: var(--white);
+      border-color: var(--border);
+      color: var(--primary);
+    }
+
+    .button-secondary:hover { border-color: var(--accent); }
+
+    .hero-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: 2.6rem;
+      color: var(--primary);
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .price small {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 10px;
+      color: #4e6068;
+    }
+
+    .check {
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 900;
+    }
+
+    section { padding: 82px 0; }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+
+    .section-head span {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.035em;
+      line-height: 1.1;
+      margin: 9px 0 14px;
+    }
+
+    .section-head p { color: var(--muted); }
+
+    .services {
+      background: var(--light);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 27px;
+      box-shadow: 0 5px 20px rgba(18,59,82,.04);
+    }
+
+    .service.featured {
+      border-color: #9edbcf;
+      background: linear-gradient(145deg, #fff, #f0faf7);
+    }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--accent-light);
+      margin-bottom: 18px;
+      font-size: 1.25rem;
+    }
+
+    .service h3 {
+      color: var(--primary);
+      margin-bottom: 9px;
+      font-size: 1.17rem;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 18px;
+    }
+
+    .service-price {
+      color: var(--primary);
+      font-weight: 850;
+      font-size: 1.12rem;
+    }
+
+    .service-price span {
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 600;
+    }
+
+    .pricing-note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-box {
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 34px;
+    }
+
+    .about-box h3 { font-size: 1.5rem; margin-bottom: 14px; }
+    .about-box p { color: rgba(255,255,255,.78); }
+
+    .facts {
+      display: grid;
+      gap: 18px;
+    }
+
+    .fact {
+      display: flex;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fact strong { display: block; color: var(--primary); }
+    .fact span { color: var(--muted); font-size: .92rem; }
+
+    .location {
+      background: var(--light);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .location-card, .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .location-card h3, .contact-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .address {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .map-placeholder {
+      min-height: 230px;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #eaf4f4;
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
+    }
+
+    .map-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 230px;
+      border: 0;
+      display: block;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 15px;
+      border-radius: 12px;
+      background: var(--light);
+    }
+
+    .contact-item strong { display: block; color: var(--primary); }
+    .contact-item span { color: var(--muted); font-size: .92rem; }
+
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,.72);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer strong { color: var(--white); }
+
+    @media (max-width: 850px) {
+      .hero-grid, .about-grid, .location-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 65px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .hero-card { max-width: 600px; }
+    }
+
+    @media (max-width: 650px) {
+      .container { width: min(100% - 28px, 1120px); }
+      nav a:not(.nav-button) { display: none; }
+      .nav-button { padding: 9px 13px; }
+      section { padding: 60px 0; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="AHOLKUTY inicio">
+        <span class="brand-mark">A</span>
+        AHOLKUTY
+      </a>
+
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#precios">Precios</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a class="nav-button" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Asesoría para PYMES y autónomos</span>
+          <h1>Tu negocio.<br>Bien asesorado.</h1>
+          <p>
+            En AHOLKUTY te ayudamos con la gestión fiscal, contable, laboral
+            y administrativa para que puedas centrarte en hacer crecer tu negocio.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="#servicios">Ver servicios</a>
+            <a class="button button-secondary" href="#ubicacion">Cómo llegar</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div>
+              <div class="mini-label">Servicios desde</div>
+              <div class="price">100 € <small>/ mes</small></div>
+            </div>
+            <span class="eyebrow">Simple y cercano</span>
+          </div>
+
+          <ul class="check-list">
+            <li><span class="check">✓</span> Gestión fiscal y contable</li>
+            <li><span class="check">✓</span> Gestión laboral y nóminas</li>
+            <li><span class="check">✓</span> Administración externa</li>
+            <li><span class="check">✓</span> Subvenciones y ayudas</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <span>Qué hacemos</span>
+          <h2>Servicios pensados para tu negocio</h2>
+          <p>
+            Acompañamos a autónomos, emprendedores y pequeñas empresas
+            en sus principales necesidades de gestión.
+          </p>
+        </div>
+
+        <div class="service-grid" id="precios">
+          <article class="service">
+            <div class="icon">📊</div>
+            <h3>Gestión contable y fiscal</h3>
+            <p>
+              Llevanza de libros contables, conciliación bancaria,
+              modelos impositivos habituales y declaraciones.
+            </p>
+            <div class="service-price">100–120 € <span>/ mes*</span></div>
+          </article>
+
+          <article class="service">
+            <div class="icon">👥</div>
+            <h3>Gestión laboral y nóminas</h3>
+            <p>
+              Altas y bajas, contratos, confección de nóminas y
+              gestión de trámites con la Seguridad Social.
+            </p>
+            <div class="service-price">100–120 € <span>/ mes*</span></div>
+          </article>
+
+          <article class="service">
+            <div class="icon">🗂️</div>
+            <h3>Administración externa</h3>
+            <p>
+              Gestión de facturas, control de cobros y pagos
+              y preparación de remesas bancarias.
+            </p>
+            <div class="service-price">100–120 € <span>/ mes*</span></div>
+          </article>
+
+          <article class="service">
+            <div class="icon">💡</div>
+            <h3>Subvenciones y ayudas</h3>
+            <p>
+              Seguimiento de ayudas y subvenciones locales y autonómicas
+              y apoyo en su tramitación.
+            </p>
+            <div class="service-price">Consultar</div>
+          </article>
+
+          <article class="service featured">
+            <div class="icon">🌱</div>
+            <h3>Consultoría en Sostenibilidad y ESG</h3>
+            <p>
+              Servicio innovador orientado a calcular la huella de carbono
+              y ayudar a las empresas con sus necesidades relacionadas con
+              normativas medioambientales.
+            </p>
+            <div class="service-price">Consultar</div>
+          </article>
+        </div>
+
+        <div class="pricing-note">
+          * El documento del proyecto establece que los servicios a clientes
+          suelen situarse alrededor de 100–120 € al mes. Los importes mostrados
+          son orientativos y pueden variar según las necesidades del cliente.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container about-grid">
+        <div class="about-box">
+          <h3>AHOLKUTY</h3>
+          <p>
+            Asesoría orientada a PYMES, autónomos y emprendedores,
+            con una atención cercana para facilitar la gestión diaria
+            de sus negocios.
+          </p>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <span>La asesoría</span>
+            <h2>Nos ocupamos de la gestión para que tú puedas avanzar.</h2>
+          </div>
+
+          <div class="facts">
+            <div class="fact">
+              <div class="icon">📈</div>
+              <div>
+                <strong>Fiscal y contable</strong>
+                <span>Control de obligaciones fiscales y contables.</span>
+              </div>
+            </div>
+            <div class="fact">
+              <div class="icon">⚖️</div>
+              <div>
+                <strong>Laboral</strong>
+                <span>Gestión de trabajadores, contratos y nóminas.</span>
+              </div>
+            </div>
+            <div class="fact">
+              <div class="icon">🌱</div>
+              <div>
+                <strong>Innovación</strong>
+                <span>Consultoría en sostenibilidad y ESG.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="ubicacion">
+      <div class="container">
+        <div class="section-head">
+          <span>Dónde estamos</span>
+          <h2>Visítanos en Bilbao</h2>
+          <p>Estamos situados en el distrito de Indautxu, en Bilbao.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>📍 Nuestra oficina</h3>
+            <p class="address">
+              Sabino Arana Etorbidea, 3<br>
+              Abando · 48013 Bilbao, Bizkaia
+            </p>
+
+            <a
+              class="button button-primary"
+              href="https://www.google.com/maps/search/?api=1&query=Sabino+Arana+Etorbidea+3,+Bilbao"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir en Google Maps
+            </a>
+          </div>
+
+          <div class="map-placeholder">
+            <iframe
+              title="Mapa de AHOLKUTY en Bilbao"
+              src="https://www.google.com/maps?q=Sabino+Arana+Etorbidea+3,+Bilbao,+Bizkaia&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <span>Contacto</span>
+          <h2>Hablemos de tu negocio</h2>
+          <p>
+            Si necesitas una asesoría para tu empresa o actividad profesional,
+            puedes ponerte en contacto con AHOLKUTY.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h3>AHOLKUTY</h3>
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>📍 Dirección</strong>
+              <span>Sabino Arana Etorbidea, 3 · Bilbao</span>
+            </div>
+            <div class="contact-item">
+              <strong>🏢 Actividad</strong>
+              <span>Asesoría para PYMES y autónomos</span>
+            </div>
+            <div class="contact-item">
+              <strong>💶 Tarifas</strong>
+              <span>Servicios orientativos desde 100–120 €/mes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>AHOLKUTY</strong> · Asesoría para PYMES y autónomos</div>
+      <div>Bilbao · Bizkaia</div>
+    </div>
+  </footer>
+</body>
+</html>
